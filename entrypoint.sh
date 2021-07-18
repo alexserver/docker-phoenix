@@ -11,3 +11,5 @@ cp /app/_extras/package.json /app/src/assets/
 
 # copy the dev.exs file
 cp /app/_extras/dev.exs /app/src/config/
+
+echo "Entrypoint executed"
