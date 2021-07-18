@@ -30,7 +30,9 @@ ENV MIX_ENV=dev
 
 WORKDIR /app
 
-RUN mkdir -p /app/src/assets
+RUN \
+    mkdir -p /app/src/assets && \
+    mkdir -p /app/src/config
 
 COPY ./_extras/package.json /app/src/assets/
 
