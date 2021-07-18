@@ -1,5 +1,5 @@
 # Version of docker-compose
-version: '3.9'
+version: '3'
 
 # Containers we are going to run
 services:
