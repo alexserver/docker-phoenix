@@ -8,6 +8,7 @@ RUN \
     apk update && \
     apk --no-cache --update add \
     build-base \
+    postgresql-client \
     git \
     wget \
     curl \
@@ -17,7 +18,7 @@ RUN \
     python2 \
     py-pip \
     inotify-tools && \
-    apk add --no-cache --virtual .gyp make g++ \
+    apk add --no-cache --virtual .gyp make g++ && \
     update-ca-certificates --fresh
 
 # Installing hex and rebar
@@ -26,6 +27,7 @@ RUN mix local.hex --force, local.rebar --force
 RUN mix archive.install hex phx_new 1.5.9 --force
 
 ENV MIX_ENV=dev
+
 WORKDIR /app
 # Starting a fake daemon to keep the server always alive.
 CMD tail -f /dev/null

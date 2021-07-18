@@ -24,7 +24,11 @@ services:
       # The db container needs to be started before we start this container
       - db
     volumes:
+      # The mapped directory from host to container
       - .:/app
+    command:
+      # The shell script that will be run when the container ir built
+      - ./entrypoint.sh
   db:
     # We use the predefined Postgres image
     image: postgres:9.6
