@@ -1,29 +1,25 @@
 # ./Dockerfile
 
 # Extend from the official Elixir image
-FROM elixir:1.12-alpine
+FROM elixir:1.12
 
 # Installing dependencies
 RUN \
-    apk update && \
-    apk --no-cache --update add \
-    build-base \
-    git \
-    wget \
-    curl \
-    nodejs \
-    npm \
-    bash \
-    python2 \
-    py-pip \
-    inotify-tools && \
-    apk add --no-cache --virtual .gyp make g++ \
-    update-ca-certificates --fresh
+    apt-get update && \
+    apt-get install -y postgresql-client && \
+    apt-get install -y inotify-tools && \
+    apt-get install -y nodejs && \
+    apt-get install -y wget curl git &&\
+    curl -L https://npmjs.org/install.sh | sh && \
+    mix local.hex --force && \
+    mix archive.install hex phx_new 1.5.9 --force && \
+    mix local.rebar --force
 
-# Installing hex and rebar
-RUN mix local.hex --force, local.rebar --force
-# Installing phoenix
-RUN mix archive.install hex phx_new 1.5.9 --force
+# Installing hex, rebar and phoenix 1.5.9
+RUN \
+    mix local.hex --force && \
+    mix archive.install hex phx_new 1.5.9 --force && \
+    mix local.rebar --force
 
 ENV MIX_ENV=dev
 WORKDIR /app
