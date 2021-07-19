@@ -7,7 +7,13 @@ dc up -d [db, phoenix]
 ## get into shell
 d exec -it phoenix sh
 
+## npm see outdated references
+```
+npm outdated
+```
+
 ## after creating a project in phoenix
+
 ```
 We are almost there! The following steps are missing:
 

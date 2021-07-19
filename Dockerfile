@@ -22,6 +22,17 @@ RUN \
     mix local.rebar --force
 
 ENV MIX_ENV=dev
+
 WORKDIR /app
+
+RUN \
+    mkdir -p /app/data && \
+    mkdir -p /app/src/assets && \
+    mkdir -p /app/src/config
+
+COPY ./_extras/package.json /app/src/assets/
+
+COPY ./_extras/dev.exs /app/src/config/
+
 # Starting a fake daemon to keep the server always alive.
 CMD tail -f /dev/null
