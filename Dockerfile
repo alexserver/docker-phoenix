@@ -25,11 +25,7 @@ ENV MIX_ENV=dev
 
 WORKDIR /app
 
-RUN \
-    mkdir -p /app/data && \
-    mkdir -p /app/src/config
-
-COPY _extras/dev.exs /app/src/config/
+COPY _extras/dev.exs /app/config/
 
 # Starting a fake daemon to keep the server always alive.
 CMD tail -f /dev/null
