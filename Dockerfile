@@ -9,8 +9,8 @@ RUN \
     apt-get install -y postgresql-client && \
     apt-get install -y inotify-tools && \
     apt-get install -y nodejs && \
-    apt-get install -y wget curl git &&\
-    curl -L https://npmjs.org/install.sh | sh && \
+    apt-get install -y npm && \
+    apt-get install -y git &&\
     mix local.hex --force && \
     mix archive.install hex phx_new 1.5.9 --force && \
     mix local.rebar --force
@@ -27,12 +27,9 @@ WORKDIR /app
 
 RUN \
     mkdir -p /app/data && \
-    mkdir -p /app/src/assets && \
     mkdir -p /app/src/config
 
-COPY ./_extras/package.json /app/src/assets/
-
-COPY ./_extras/dev.exs /app/src/config/
+COPY _extras/dev.exs /app/src/config/
 
 # Starting a fake daemon to keep the server always alive.
 CMD tail -f /dev/null

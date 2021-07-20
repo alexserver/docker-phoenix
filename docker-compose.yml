@@ -25,7 +25,7 @@ services:
       - db
     volumes:
       # The mapped directory from host to container
-      - .:/app
+      - ./src:/app
   db:
     # We use the predefined Postgres image
     image: postgres:9.6
