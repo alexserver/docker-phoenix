@@ -1,7 +1,7 @@
 # ./Dockerfile
 
 # Extend from the official Elixir image
-FROM elixir:1.12
+FROM elixir:1.12-slim
 
 # Installing dependencies
 RUN \

@@ -13,7 +13,7 @@ db: ## Start the DB container
 	docker-compose up -d db
 
 phoenix: ## Start the Phoenix container
-	docker-compose up -d phoenix
+	docker-compose up -d phoenix-slim
 
 shell: ## Enter the container Terminal
-	docker exec -it phoenix bash
+	docker exec -it phoenix-slim bash
