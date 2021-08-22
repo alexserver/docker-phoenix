@@ -13,7 +13,10 @@ db: ## Start the DB container
 	docker-compose up -d db
 
 phoenix: ## Start the Phoenix container
-	docker-compose up -d phoenix-slim
+	docker-compose up -d phoenix
 
 shell: ## Enter the container Terminal
-	docker exec -it phoenix-slim bash
+	docker exec -it phoenix bash
+
+server: ## Starts the Phoenix container and also the web application
+	docker-compose run --rm -p 4000:4000 phoenix mix phx.server

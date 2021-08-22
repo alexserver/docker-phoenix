@@ -4,10 +4,10 @@ version: '3'
 # Containers we are going to run
 services:
   # Our Phoenix container
-  phoenix-slim:
+  phoenix:
     # The build parameters for this container. Current directory
     build: .
-    container_name: phoenix-slim
+    container_name: phoenix
     environment:
       # Variables to connect to our Postgres server
       PGHOST: db
@@ -40,7 +40,7 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     restart: always
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
 # Define the volumes
-# volumes:
-#   pgdata:
+volumes:
+  pgdata:

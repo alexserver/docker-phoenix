@@ -25,7 +25,5 @@ ENV MIX_ENV=dev
 
 WORKDIR /app
 
-COPY _extras/dev.exs /app/config/
-
 # Starting a fake daemon to keep the server always alive.
 CMD tail -f /dev/null
